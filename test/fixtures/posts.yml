@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  image_id: MyString
+  name: MyString
+  genre: 1
+  mood: 1
+  use: 1
+  participant: 1
+  type: 1
+  private: 1
+  smoking: 1
+  phone_number: MyString
+  postal_number: MyString
+  address: MyString
+  introduce: MyText
+
+two:
+  user_id: 1
+  image_id: MyString
+  name: MyString
+  genre: 1
+  mood: 1
+  use: 1
+  participant: 1
+  type: 1
+  private: 1
+  smoking: 1
+  phone_number: MyString
+  postal_number: MyString
+  address: MyString
+  introduce: MyText

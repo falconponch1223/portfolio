@@ -1,0 +1,38 @@
+<div class="container">
+  <%= form_for(@post, url: {controller: "posts", action: "create"}) do |f| %>
+  <!-- エラーメッセージ 表示 -->
+  <%= render 'layouts/error_form', model: f.object %>
+  <div class="row">
+    <h1>商品新規登録</h1>
+    <div class= "col-md-4">
+      <%#<%= attachment_image_tag @product, :image, class: "img-square", fallback: "no_image.png", size:"300x300" %>
+      <p>お店紹介写真</p>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class= "col-md-8">
+      <p>店名</p><%= f.text_field :name %>
+      <p>お店ジャンル</p>
+      <p>店内雰囲気</p> <%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "--選択して下さい--" %>
+      <p>利用目的</p><%= f.text_field :price %>円
+      <p>利用人数</p><%= f.text_field :participant %>
+      <p>席タイプ</p>
+      <%= f.select :age,
+        [["未成年", "未成年"], ["二十代", "二十代"], ["三十代", "三十代"], ["四十代", "四十代"], ["五十代", "五十代"], ["その他", "その他"]]
+      %>
+      <p>個室の有無</p>
+      <p>喫煙の可否</p>
+      <p>お店の電話番号</p>
+      <p>お店の郵便番号</p>
+      <p>お店の住所</p>
+      <p>お店の紹介・おすすめポイント</p><%= f.text_area :introduce %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="text-right">
+        <button class="btn btn-primary">新規登録</button>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

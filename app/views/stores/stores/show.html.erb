@@ -1,0 +1,63 @@
+<p class="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <section class="customer-detail">
+      <h2><%= @store.name %>のマイページ</h2>
+    <br>
+    <div class="col-xs-5">
+        <table class="table">
+          <tr>
+            <th>お店の名前</th>
+            <th><%= @store.name %></th>
+          </tr>
+          <tr>
+            <th>お店のジャンル</th>
+            <th><%= @store.genre %></th>
+          </tr>
+          <tr>
+            <th>お店の雰囲気</th>
+            <th><%= @store.mood %></th>
+          </tr>
+          <tr>
+            <th>個室の有無</th>
+            <th> <%= @store.private %></th>
+          </tr>
+          <tr>
+            <th>喫煙の可否</th>
+            <th><%= @store.smoking %></th>
+          </tr>
+          <tr>
+            <th>お店の電話番号</th>
+            <th><%= @store.phone_number %></th>
+          </tr>
+          <tr>
+            <th>お店の郵便番号</th>
+            <th><%= @store.postal_number %></th>
+          </tr>
+          <tr>
+            <th>お店の住所</th>
+            <th><%= @store.address %></th>
+          </tr>
+          <tr>
+            <th>お店の紹介</th>
+            <th><%= @store.introduce %></th>
+          </tr>
+        </table>
+        <div class='btn-toolbar'>
+            <button class="btn btn-primary btn-lg text-bottom"><%= link_to "編集する", edit_stores_store_path, :style=>"color:white;" %></button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

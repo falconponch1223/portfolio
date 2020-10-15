@@ -1,0 +1,83 @@
+<h2>裏おもてなし　個人会員様用新規登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+　<div class="login-field">
+    <div class="field">
+      <%= f.label :ニックネーム %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :メールアドレス %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :パスワード %>
+      <% if @minimum_password_length %>
+      <em>(最小<%= @minimum_password_length %> 文字以上入力願います)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :パスワード（確認用） %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  </div>
+　<div class="extra-infomation">
+    <h3 >以下は追加情報入力フォームとなりますので記入希望されない方は一番下の新規登録ボタンをクリックしてください！
+    </h3>
+    <p>
+    どのような方がそのお店を利用されたか情報を入力していただくことでより皆様にとって参考となるサイトを目指しておりますが、<br>他の登録者様からも閲覧可能となっていますので同意いただける方のみご記入ください<br>
+    （一部非回答及び後からマイページにて編集可能です）
+    </p>
+
+  　<div class="gender_field">
+      <%= f.label :性別 %><br />
+      <%= f.label :男性  %>
+      <%= f.radio_button :gender, :男性 %>
+      <%= f.label :女性  %>
+      <%= f.radio_button :gender, :女性 %>
+      <%= f.label :非回答  %>
+      <%= f.radio_button :gender, :回答しない %>
+  　</div>
+  　<div class="age_field">
+      <%= f.label :ご年齢 %><br>
+      <%= f.select :age,
+        [["未成年", "未成年"], ["二十代", "二十代"], ["三十代", "三十代"], ["四十代", "四十代"], ["五十代", "五十代"], ["その他", "その他"]]
+      %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :業種 %><br>
+      <%= f.select :industry, 
+        [["農林業または水産業", "農林業または水産業"], ["建設業または土木業", "建設業または土木業"], ["工業または製造業", "工業または製造業"],
+        ["電気またはガス等の都市インフラ業", "電気またはガス等の都市インフラ業"], ["通信業", "通信業"],["情報サービス業","情報サービス業" ],
+        ["運輸業または郵便業", "運輸業または郵便業"], ["卸売業または小売業", "卸売業または小売業"], ["金融業または保険業", "金融業または保険業"],
+        ["不動産業または賃貸業", "不動産業または賃貸業"], ["研究者または専門技術者", "研究者または専門技術者" ],
+        ["宿泊業または飲食サービス業", "宿泊業または飲食サービス業"], ["教育または学習支援業", "教育または学習支援業"],
+        ["医療または福祉関連", "医療または福祉関連"], ["官公庁または地方自治体等", "官公庁または地方自治体等"], ["その他業種", "その他業種"]]
+      %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :職種 %><br>
+      <%= f.select :job, 
+        [["会社員", "会社員"], ["公務員", "公務員"], ["自営業", "自営業"], ["会社役員", "会社役員"], ["専業主婦", "専業主婦"],
+        ["学生", "学生"], ["パート", "パート"], ["無職", "無職"], ["その他職種", "その他職種"]]
+      %>
+    </div>
+  </div>
+     <br>
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+  <br>
+  <%= render "users/shared/links" %>
+  <br>
+  <br>
+<% end %>
+
+
