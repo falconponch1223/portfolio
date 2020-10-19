@@ -1,0 +1,82 @@
+<div class="container">
+  <%= form_for(@post, url: {controller: "posts", action: "create"}) do |f| %>
+  <!-- エラーメッセージ 表示 -->
+  <%= render 'layouts/error_form', model: f.object %>
+  <div class="row">
+    <h1>おすすめ店新規投稿</h1>
+    <div class= "col-md-4">
+      <%= attachment_image_tag @post, :image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <%= f.attachment_field :image %><br>
+      <p>店名</p><%= f.text_field :name %>
+      <p>お店の電話番号</p>
+        <%= f.text_field :phone_number %>
+      <p>お店の郵便番号</p>
+        <%= f.text_field :postal_number %>
+      <p>お店の住所</p>
+        <%= f.text_area :address %>
+      <p>お店の紹介・おすすめポイント</p>
+        <%= f.text_area :introduce %>
+    </div>
+    <div class= "col-md-8">
+      <p>お店ジャンル</p>
+        <%= f.select :genre,
+         [["懐石・割烹料理", "懐石・割烹料理"], ["寿司・海鮮料理", "寿司・海鮮料理"], ["天ぷら・揚げ物", "天ぷら・揚げ物"],
+          ["うなぎ・そば・うどん", "うなぎ・そば・うどん"], ["すき焼き・鍋物", "すき焼き・鍋物"], ["ステーキ・鉄板料理", "ステーキ・鉄板料理"], ["焼き肉", "焼き肉"], ["創作料理", "創作料理"], ["郷土料理", "郷土料理"], ["その他和食", "その他和食"], ["フレンチ", "フレンチ"], ["イタリアン", "イタリアン"], ["その他洋風・西洋料理", "その他洋風・西洋料理"], ["中華料理", "中華料理"], ["その他アジアン料理", "その他アジアン料理"], ["バー", "バー"], ["キャバクラ・ラウンジ", "キャバクラ・ラウンジ"], ["その他飲食店", "その他飲食店"]]
+         %><br><br>
+      <p>店内雰囲気</p>
+        <%= f.label :明るく、にぎやか  %>
+        <%= f.radio_button :mood, :明るく、にぎやか %>&emsp;
+        <%= f.label :静かで、落ち着いている  %>
+        <%= f.radio_button :mood, :静かで、落ち着いている %>&emsp;
+        <%= f.label :おしゃれ  %>
+        <%= f.radio_button :mood, :おしゃれ %>&emsp;
+        <%= f.label :その他  %>
+        <%= f.radio_button :mood, :その他 %><br><br>
+      <p>利用目的</p>
+        <%= f.select :use,
+          [["接待", "接待"], ["社内イベント", "社内イベント"], ["宴会", "宴会"],
+          ["合コン", "合コン"], ["誕生日・各種記念日", "誕生日・各種記念日"], ["結婚式二次会", "結婚式二次会"], ["法事", "法事"], 
+          ["飲み会・食事会", "飲み会・食事会"], ["その他祝い事等", "その他祝い事等"]]
+        %><br><br>
+      <p>利用人数</p>
+        <%= f.text_field :participant %><br><br>
+      <p>席タイプ</p>
+        <%= f.label :カウンター席  %>
+        <%= f.radio_button :type, :カウンター席 %>&emsp;
+        <%= f.label :テーブル席  %>
+        <%= f.radio_button :type, :テーブル席 %>&emsp;
+        <%= f.label :座敷  %>
+        <%= f.radio_button :type, :座敷 %>&emsp;
+        <%= f.label :その他席タイプ  %>
+        <%= f.radio_button :type, :その他席タイプ %><br><br>
+      <p>個室の有無</p>
+        <%= f.label :完全個室  %>
+        <%= f.radio_button :private, :完全個室 %>&emsp;
+        <%= f.label :半個室  %>
+        <%= f.radio_button :private, :半個室 %>&emsp;
+        <%= f.label :なし  %>
+        <%= f.radio_button :private, :なし %><br><br>
+      <p>喫煙の可否</p>
+        <%= f.label :喫煙可  %>
+        <%= f.radio_button :smoking, :喫煙可 %>&emsp;
+        <%= f.label :分煙  %>
+        <%= f.radio_button :smoking, :分煙 %>&emsp;
+        <%= f.label :禁煙  %>
+        <%= f.radio_button :smoking, :禁煙 %><br><br>
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="text-right">
+        <button class="btn btn-primary">新規投稿</button>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

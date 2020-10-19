@@ -1,15 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Uraomotenashi</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
+  <head>
+    <title>裏おもてなし</title>
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
   </head>
+<body>
+  <header class="navbar navbar-fixed-top">
+      <div class="container">
 
-  <body>
-    <%= yield %>
-  </body>
+        <nav class="nav navbar-nav navbar-left">
+          <span class="Logo"><%= link_to "裏おもてなし", root_path, class: "Logolink" %></span>
+        </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li class="header-link"><%= link_to "マイページ",
+              users_user_path(current_user)
+              %></li>
+            <li class="header-link"><%= link_to "新規投稿ページ",
+              new_users_post_path %></li>
+            <li class="header-link"><%= link_to "投稿一覧",
+              users_posts_path
+               %></li>
+            <li class="header-link"><%= link_to "登録店一覧",
+              users_stores_path
+               %></li>
+            <li class="header-link"><%= link_to "ログアウト",
+              destroy_user_session_path, method: :delete %></li>
+
+          <% elsif store_signed_in? %>
+            <li class="header-link"><%= link_to "登録店様ページ",
+              stores_store_path(current_store) %></li>
+            <li class="header-link"><%= link_to "登録店様用新規投稿ページ",
+              new_stores_post_path %></li>
+            <li class="header-link"><%= link_to "ログアウト",
+              destroy_store_session_path, method: :delete %></li>
+
+          <% elsif admin_signed_in? %>
+            <li class="header-link"><%= link_to "会員一覧",
+              admins_users_path %></li>
+            <li class="header-link"><%= link_to "登録店一覧",
+              admins_stores_path %></li>
+            <li class="header-link"><%= link_to "投稿一覧",
+              admins_posts_path %></li>
+            <li class="header-link"><%= link_to "ログアウト",
+              destroy_admin_session_path, method: :delete %></li>
+
+          <% else %>
+            <li class="header-link"><%= link_to "個人会員様　ログイン",
+              new_user_session_path %></li>
+            <li class="header-link"><%= link_to "個人会員様　新規登録",
+              new_user_registration_path %></li>
+            <li class="header-link"><%= link_to "登録店様　ログイン",
+              new_store_session_path %></li>
+            <li class="header-link"><%= link_to "登録店様　新規登録",
+              new_store_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+  </header>
+  <%= yield %>
+  <footer></footer>
+</body>
 </html>
+
+

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <h1>おすすめ店新規投稿</h1>
+    <div class= "col-md-4">
+      <p>投稿者の名前</p><%= @post.user.name %>
+      <%= attachment_image_tag @post, :image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+      <br>
+      <br>
+      <p>店名</p><%= @post.name %>
+      <p>お店の電話番号</p>
+        <%= @post.phone_number %>
+      <p>お店の郵便番号</p>
+        <%= @post.postal_number %>
+      <p>お店の住所</p>
+        <%= @post.address %>
+      <p>お店の紹介・おすすめポイント</p>
+        <%= @post.introduce %>
+    </div>
+    <div class= "col-md-8">
+      <p>お店ジャンル</p>
+        <%= @post.genre %>
+        <br><br>
+      <p>店内雰囲気</p>
+        <%= @post.mood %>
+        <br><br>
+      <p>利用目的</p>
+        <%= @post.use %>
+        <br><br>
+      <p>利用人数</p>
+        <%= @post.participant %>
+        <br><br>
+      <p>席タイプ</p>
+        <%= @post.type %>
+        <br><br>
+      <p>個室の有無</p>
+        <%= @post.private %>
+        <br><br>
+      <p>喫煙の可否</p>
+        <%= @post.smoking %>
+        <br><br>
+      <div class='btn-toolbar'>
+            <button class="btn btn-primary btn-lg text-bottom"><%= link_to "編集する", edit_stores_store_path, :style=>"color:white;" %></button>
+      </div>
+    </div>
+  </div>
+</div>
+

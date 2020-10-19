@@ -1,0 +1,109 @@
+<h2>裏おもてなし　登録店様用新規登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+　<div class="login-field">
+    <div class="field">
+      <%= f.label :店名 %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :メールアドレス %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :パスワード %>
+      <% if @minimum_password_length %>
+      <em>(最小<%= @minimum_password_length %> 文字以上入力願います)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :パスワード（確認用） %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  </div>
+　<div class="extra-infomation">
+    <h3 >以下は追加情報入力フォームとなりますので後から入力を希望する登録店様は一番下の新規登録ボタンをクリックしてください！
+    </h3>
+    <p>
+    こちらに入力いただいた情報は個人会員向け登録店様紹介ページに表示されるものとなります<br>
+    ログインには不要です（一部非回答及び後からマイページにて編集可能です）
+    </p>
+　　
+　　<div class="field">
+      <%= f.label :お店ジャンル %><br>
+      <%= f.select :genre,
+       [["懐石・割烹料理", "懐石・割烹料理"], ["寿司・海鮮料理", "寿司・海鮮料理"], ["天ぷら・揚げ物", "天ぷら・揚げ物"],
+        ["うなぎ・そば・うどん", "うなぎ・そば・うどん"], ["すき焼き・鍋物", "すき焼き・鍋物"], ["ステーキ・鉄板料理", "ステーキ・鉄板料理"], ["焼き肉", "焼き肉"], ["創作料理", "創作料理"], ["郷土料理", "郷土料理"], ["その他和食", "その他和食"], ["フレンチ", "フレンチ"], ["イタリアン", "イタリアン"], ["その他洋風・西洋料理", "その他洋風・西洋料理"], ["中華料理", "中華料理"], ["その他アジアン料理", "その他アジアン料理"], ["バー", "バー"], ["キャバクラ・ラウンジ", "キャバクラ・ラウンジ"], ["その他飲食店", "その他飲食店"]]
+       %>
+    </div>
+
+  　<div class="field">
+      <%= f.label :お店の雰囲気 %><br>
+      <%= f.label :明るく、にぎやか  %>
+      <%= f.radio_button :mood, :明るく、にぎやか %><br>
+      <%= f.label :静かで、落ち着いている  %>
+      <%= f.radio_button :mood, :静かで、落ち着いている %><br>
+      <%= f.label :おしゃれ  %>
+      <%= f.radio_button :mood, :おしゃれ %><br>
+      <%= f.label :その他  %>
+      <%= f.radio_button :mood, :その他 %><br>
+  　</div>
+    
+    <div class="field">
+      <%= f.label :個室の有無 %><br>
+      <%= f.label :完全個室  %>
+      <%= f.radio_button :private, :完全個室 %><br>
+      <%= f.label :半個室 %>
+      <%= f.radio_button :private, :半個室 %><br>
+      <%= f.label :オープン席のみ  %>
+      <%= f.radio_button :private, :なし %><br>
+  　</div>
+  　
+  　<div class="field">
+      <%= f.label :喫煙の可否 %><br>
+      <%= f.label :喫煙可  %>
+      <%= f.radio_button :smoking, :喫煙可 %><br>
+      <%= f.label :分煙 %>
+      <%= f.radio_button :smoking, :分煙 %><br>
+      <%= f.label :禁煙  %>
+      <%= f.radio_button :smoking, :禁煙 %><br>
+  　</div>
+
+  　<div class="field">
+      <%= f.label :電話番号 %><br />
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :郵便番号 %><br />
+      <%= f.text_field :postal_number, autofocus: true, autocomplete: "postal_number" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :住所 %><br />
+      <%= f.text_area :address, autofocus: true, autocomplete: "address" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :紹介 %><br />
+      <%= f.text_area :introduce, autofocus: true, autocomplete: "introduce" %>
+    </div>
+
+  　
+  </div>
+     <br>
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+  <br>
+  <%= render "users/shared/links" %>
+  <br>
+  <br>
+<% end %>
+
+
