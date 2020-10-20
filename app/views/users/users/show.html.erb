@@ -1,0 +1,51 @@
+<p class="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <section class="customer-detail">
+      <h2><%= @user.name %>のマイページ</h2>
+    <br>
+    <div class="col-xs-5">
+        <table class="table">
+          <tr>
+            <th>あなたのニックネーム</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>あなたのメールアドレス</th>
+            <th><%= @user.email %></th>
+          </tr>
+          <tr>
+            <th>あなたの性別</th>
+            <th><%= @user.gender %></th>
+          </tr>
+          <tr>
+            <th>あなたのご年齢</th>
+            <th> <%= @user.age %></th>
+          </tr>
+          <tr>
+            <th>あなたの業種</th>
+            <th><%= @user.industry %></th>
+          </tr>
+          <tr>
+            <th>あなたの職種</th>
+            <th><%= @user.job %></th>
+          </tr>
+        </table>
+        <div class='btn-toolbar'>
+            <button class="btn btn-primary btn-lg text-bottom"><%= link_to "編集する", edit_users_user_path, :style=>"color:white;" %></button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
