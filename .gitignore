@@ -29,4 +29,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+<<<<<<< HEAD
 /.env
+=======
+/.env
+>>>>>>> c6ba086518d3ce2106da063e5fd3c978d7aed905

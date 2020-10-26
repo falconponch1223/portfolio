@@ -1,0 +1,43 @@
+<div class="container">
+  <%= form_for(@store, url: {controller: "stores", action: "update"}) do |f| %>
+  <div class="row">
+    <h1>投稿詳細</h1>
+    <div class= "col-md-5">
+      <h3>お店紹介写真</h3>
+      <%= attachment_image_tag @store, :image, :fill, 400, 400, class: "img", fallback: "no_image.jpg"%>
+      <br>
+      <br>
+      <%= f.attachment_field :image %><br>
+    </div>
+    <div class= "col-md-3">
+      <p>店名</p><%= @store.name %>
+      <p>お店の電話番号</p>
+        <%= @store.phone_number %>
+      <p>お店の郵便番号</p>
+        <%= @store.postal_number %>
+      <p>お店の住所</p>
+        <%= @store.address %>
+      <p>お店の紹介・おすすめポイント</p>
+        <%= @store.introduce %>
+    </div>
+    <div class= "col-md-4">
+      <p>お店ジャンル</p>
+        <%= @store.genre %>
+        <br><br>
+      <p>店内雰囲気</p>
+        <%= @store.mood %>
+        <br><br>
+      <p>個室の有無</p>
+        <%= @store.private %>
+        <br><br>
+      <p>喫煙の可否</p>
+        <%= @store.smoking %>
+        <br><br>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= f.submit "変更を保存", class: "btn btn-primary", data: { confirm: '変更しますか？' } %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

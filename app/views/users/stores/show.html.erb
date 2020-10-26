@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <h1>投稿詳細</h1>
+    <% @stores.each do |store| %>
+    <div class= "col-md-5">
+      <h3>お店紹介写真</h3>
+      <%= attachment_image_tag store, :image, :fill, 400, 400, class: "img", fallback: "no_image.jpg"%>
+      <br>
+      <br>
+    </div>
+    <div class= "col-md-3">
+      <p>店名</p><%= store.name %>
+      <p>お店の電話番号</p>
+        <%= store.phone_number %>
+      <p>お店の郵便番号</p>
+        <%= store.postal_number %>
+      <p>お店の住所</p>
+        <%= store.address %>
+      <p>お店の紹介・おすすめポイント</p>
+        <%= store.introduce %>
+    </div>
+    <div class= "col-md-4">
+      <p>お店ジャンル</p>
+        <%= store.genre %>
+        <br><br>
+      <p>店内雰囲気</p>
+        <%= store.mood %>
+        <br><br>
+      <p>利用目的</p>
+        <%= store.use %>
+        <br><br>
+      <p>個室の有無</p>
+        <%= store.private %>
+        <br><br>
+      <p>喫煙の可否</p>
+        <%= store.smoking %>
+        <br><br>
+    </div>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <h1>投稿詳細</h1>
+    <div class= "col-md-5">
+      <h3>お店紹介写真</h3>
+      <%= attachment_image_tag @post, :image, :fill, 400, 400, class: "img", fallback: "no_image.jpg"%>
+      <br>
+      <br>
+      <% if @post.user.id != current_user.id %>
+        <% if @post.favorited_by?(current_user) %>
+        <li>
+          <%= link_to users_post_favorite_path(@post), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @post.favorites.count %> いいね
+          <% end %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to users_post_favorites_path(@post), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <%= @post.favorites.count %> いいね
+          <% end %>
+        </li>
+        <% end %>
+
+        <h2>コメント一覧</h2>
+        <% @post.post_comments.each do |c| %>
+        <div class="comment-text">
+          <div class="comment-author clearfix">
+            <%= link_to c.user.name ,users_user_path(c.user) %>
+            <span class="comment-meta">
+              <span class="comment-date"><%= c.created_at.strftime('%Y/%m/%d') %></span>
+            </span>
+          </div>
+          <div class="comment-entry"><%= c.comment %></div>
+        </div>
+        <% end %>
+        <%= form_for [@post, @post_comment], url: users_post_post_comments_path(@post) do |f| %>
+          <%= f.text_field :comment %>
+          <br>
+          <%= f.submit 'コメントする' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class= "col-md-3">
+      <p>投稿者の名前</p><%= @post.user.name %>
+      <p>店名</p><%= @post.name %>
+      <p>お店の電話番号</p>
+        <%= @post.phone_number %>
+      <p>お店の郵便番号</p>
+        <%= @post.postal_number %>
+      <p>お店の住所</p>
+        <%= @post.address %>
+      <p>お店の紹介・おすすめポイント</p>
+        <%= @post.introduce %>
+    </div>
+    <div class= "col-md-4">
+      <p>お店ジャンル</p>
+        <%= @post.genre %>
+        <br><br>
+      <p>店内雰囲気</p>
+        <%= @post.mood %>
+        <br><br>
+      <p>利用目的</p>
+        <%= @post.use %>
+        <br><br>
+      <p>利用人数</p>
+        <%= @post.participant %>
+        <br><br>
+      <p>席タイプ</p>
+        <%= @post.seat %>
+        <br><br>
+      <p>個室の有無</p>
+        <%= @post.private %>
+        <br><br>
+      <p>喫煙の可否</p>
+        <%= @post.smoking %>
+        <br><br>
+      <% if @post.user.id == current_user.id %>
+        <div class='btn-toolbar'>
+              <button class="btn btn-primary btn-lg text-bottom"><%= link_to "編集する", edit_users_post_path, :style=>"color:white;" %></button>
+              <button class="btn btn-danger btn-lg text-bottom"><%= link_to "削除する", users_post_path(@post),  method: :delete, "data-confirm" => "本当に消しますか?", :style=>"color:white;" %></button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
