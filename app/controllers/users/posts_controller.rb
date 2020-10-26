@@ -46,7 +46,7 @@ class Users::PostsController < Users::Base
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_users_posts_path, notice: '投稿を削除しました'
+    redirect_users_posts_path
   end
 
   private
