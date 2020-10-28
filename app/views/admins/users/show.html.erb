@@ -1,0 +1,100 @@
+<p class="notice"><%= notice %></p>
+<div class="container">
+  <section class="customer-detail">
+    <h2><%= @user.name %>のマイページ</h2>
+    <br>
+    <div class="row">
+      <div class="col-xs-5 user-table">
+        <table class="table">
+          <tr>
+            <th>あなたのニックネーム</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>あなたのメールアドレス</th>
+            <th><%= @user.email %></th>
+          </tr>
+          <tr>
+            <th>あなたの性別</th>
+            <th><%= @user.gender %></th>
+          </tr>
+          <tr>
+            <th>あなたのご年齢</th>
+            <th> <%= @user.age %></th>
+          </tr>
+          <tr>
+            <th>あなたの業種</th>
+            <th><%= @user.industry %></th>
+          </tr>
+          <tr>
+            <th>あなたの職種</th>
+            <th><%= @user.job %></th>
+          </tr>
+        </table>
+      </div>
+      <div class="row">
+      <div class="col-xs-6 post-table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>投稿店画像</th>
+              <th>投稿店名 </th>
+              <th>投稿日付</th>
+              <th colspan="6"></th>
+            </tr>
+           </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td>
+                  <a>
+                    <%= link_to (attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg"),users_post_path(post) %>
+                  </a>
+                </td>
+                <td class="post-name"><%= post.name  %></td>
+                <td class="post-date"><%= post.created_at.strftime("%Y年%m月%d日%H時%M分")%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="col-xs-15 favo-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>いいねした投稿店画像</th>
+                <th>いいねした投稿店名 </th>
+                <th>いいね投稿の投稿者名</th>
+                <th colspan="3"></th>
+              </tr>
+             </thead>
+            <tbody>
+              <% @user.favorite_posts.each do |favo| %>
+                <tr>
+                  <td>
+                    <a>
+                      <%= link_to (attachment_image_tag favo, :image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg"),users_post_path(favo) %>
+                    </a>
+                  </td>
+                  <td class="post-name"><%= link_to favo.name , users_post_path(favo) %></td>
+                  <td class="post-name"><%= link_to favo.user.name , users_user_path(favo.user) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+

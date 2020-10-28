@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'posts/index'
+    get 'posts/show'
+  end
   root 'top#top'
 
   devise_for :stores, controllers: {
@@ -10,7 +14,6 @@ Rails.application.routes.draw do
   namespace :stores do
     root 'stores#top'
     resources :stores, only: [:show, :edit, :update]
-    resources :posts
   end
 
   devise_for :users, controllers: {
@@ -36,10 +39,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    root 'stores#top'
-    resources :users
-    resources :posts
-    resources :stores
+    resources :users, only: [:show, :index]
+    resources :stores, only: [:show, :index]
+    resources :posts, only: [:show, :index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -37,8 +37,8 @@
           <% elsif store_signed_in? %>
             <li class="header-link"><%= link_to "登録店様ページ",
               stores_store_path(current_store) %></li>
-            <li class="header-link"><%= link_to "登録店様用新規投稿ページ",
-              new_stores_post_path %></li>
+            <li class="header-link"><%= link_to "登録店一覧",
+              users_stores_path %></li>
             <li class="header-link"><%= link_to "ログアウト",
               destroy_store_session_path, method: :delete %></li>
 

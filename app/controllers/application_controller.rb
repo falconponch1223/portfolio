@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.class == Admin
-      admins_root_path
+      admins_users_path
     elsif resource.class == User
       root_path
     elsif resource.class == Store
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :genre, :mood, :private, :smoking, :phone_number, :postal_number, :address, :introduce, :gender, :age, :industry, :job])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :genre, :mood, :private, :smoking, :phone_number, :postal_number, :address, :introduce, :gender, :age, :industry, :job, :image])
   end
 
 end
